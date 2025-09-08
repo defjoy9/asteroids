@@ -18,12 +18,12 @@ def main():
         
 
 
-        player.update(df)
+        
         screen.fill("black")
         player.draw(screen)
         pygame.display.flip()
         df = clock.tick(60) / 1000 # 60 FPS
-        
+        player.update(df)
         
 
 
