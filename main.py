@@ -8,7 +8,9 @@ def main():
     clock = pygame.time.Clock()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0
-
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
 
     while True:
         # makes the exit button work
@@ -16,14 +18,14 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-
-
-        
+        updatable.update(dt)
         screen.fill("black")
-        player.draw(screen)
+
+        for obj in drawable:
+            obj.draw(screen)
+
         pygame.display.flip()
         df = clock.tick(60) / 1000 # 60 FPS
-        player.update(df)
         
 
 
